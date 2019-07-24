@@ -1,0 +1,61 @@
+var CL = {
+  branch: "refs/master",
+  project: "projectA/D1",
+};
+/*
+var pluginMyTest = function() {
+  const br = CL.branch;
+  const path = CL.project + ':' + br;
+  const useJSE = true;
+  return {br:br,path:path,useJSE:useJSE,};
+}();
+*/
+var pluginMyTest = {
+  br: "refs/master",
+  path: "projectA/D1:refs/master",
+  useJSE: true,
+};
+/*
+var S1S2 = function() {
+  const br1 = CL.branch;
+  const useJSE = true;
+  return {br1:br1,useJSE:useJSE,};
+}();
+*/
+var S1S2 = {
+  br1: "refs/master",
+  useJSE: true,
+};
+/*
+var S2Sub2Sub1 = function() {
+  const br2 = CL.branch;
+  const useJSE = true;
+  return {br2:br2,useJSE:useJSE,};
+}();
+*/
+var S2Sub2Sub1 = {
+  br2: "refs/master",
+  useJSE: true,
+};
+/*
+var Sec2 = function() {
+  const p1P2Name = 'p1-p2' + '-name';
+  const useJSE = true;
+  return {p1P2Name:p1P2Name,useJSE:useJSE,};
+}();
+*/
+var Sec2 = {
+  p1P2Name: "p1-p2-name",
+  useJSE: true,
+};
+/*
+var Sec2Sub1SUb2 = function() {
+  const prOj = CL.project;
+  const useJSE = true;
+  return {prOj:prOj,useJSE:useJSE,};
+}();
+*/
+var Sec2Sub1SUb2 = {
+  prOj: "projectA/D1",
+  useJSE: true,
+};

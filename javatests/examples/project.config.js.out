@@ -1,0 +1,97 @@
+var FindOwners = {
+  submitFilter: (labels) => labels,
+};
+var CL = {
+  commitDelta: (regex) => CL.Files.some(f => f.match(regex) != null),
+  label: (name, vote, uid) => ({Name: name, Value: vote, User: uid}),
+  user: (email, id, name) => ({Email: email, Id: id, Name: name}),
+  removeLabel: (x, labels) => labels.filter(y => y.Name != x),
+  Author: ({Email:"u101@g.com", Id:101, Name:"John Smith"}),
+  Committer: ({Email:"u102@g.com", Id:102, Name:"John"}),
+  Uploader: ({Email:"u42@g.com", Id:42, Name:"Smith"}),
+  Branch: "refs/beta",
+  Files: ["test.txt", "OWNERS"],
+  IsPureRevert: false,
+  Labels: [{Name:"Code-Review", Value:1, User:101}],
+  Message: "A test CL",
+  NumFiles: ({Deleted:0, Inserted:0, Modified:2}),
+  NumUnresolvedComments: 0,
+  Project: "ProjectA",
+};
+/*
+var pluginDemo = function() {
+  const fac = (n) => n < 2 ? 1 : n * fac(n - 1);
+  const fac4 = fac(4);
+  const fac5 = fac(5);
+  const useJSE = true;
+  return {fac:fac,fac4:fac4,fac5:fac5,useJSE:useJSE,};
+}();
+*/
+var pluginDemo = {
+  fac: (n) => n < 2 ? 1 : n * fac(n - 1),
+  fac4: 24,
+  fac5: 120,
+  useJSE: true,
+};
+/*
+var pluginFindOwners = function() {
+  const BCOLabel = 'Build-Cop-Override';
+  const ExemptUsers = [104, 106];
+  const NoOwnersReviewBranches = ['refs/heads/my-experiment', 'refs/heads/beta-testing'];
+  const addDebugMsg = true;
+  const alwaysShowButton = true;
+  const blockSubmit = true;
+  const enable = true;
+  const isBCOLabel = (x) => x.name == BCOLabel && x.value > 0;
+  const hasBuildCopOverride = CL.Labels.some(isBCOLabel);
+  const isExemptUploader = ExemptUsers.indexOf(CL.Uploader.Id) >= 0;
+  const isExemptFromReviews = isExemptUploader || hasBuildCopOverride;
+  const maxCacheAge = 30;
+  const maxCacheSize = 2000;
+  const minOwnerVoteLevel = 1;
+  const optInFindOwners = true;
+  const optOutFindOwners = NoOwnersReviewBranches.indexOf(CL.Branch) >= 0;
+  const needOwnerReview = !isExemptFromReviews && !optOutFindOwners && optInFindOwners;
+  const ownersFileName = 'OWNERS.android';
+  const rejectErrorInOwners = true;
+  const removeOwnerApproved = true;
+  const useJSE = true;
+  // ERROR: ownersFileName = OWNERS.android
+  // org.mozilla.javascript.EcmaError: ReferenceError: "OWNERS" is not defined. (ownersFileName#1)
+  return {BCOLabel:BCOLabel,ExemptUsers:ExemptUsers,
+          NoOwnersReviewBranches:NoOwnersReviewBranches,
+          addDebugMsg:addDebugMsg,alwaysShowButton:alwaysShowButton,
+          blockSubmit:blockSubmit,enable:enable,
+          hasBuildCopOverride:hasBuildCopOverride,isBCOLabel:isBCOLabel,
+          isExemptFromReviews:isExemptFromReviews,
+          isExemptUploader:isExemptUploader,maxCacheAge:maxCacheAge,
+          maxCacheSize:maxCacheSize,minOwnerVoteLevel:minOwnerVoteLevel,
+          needOwnerReview:needOwnerReview,optInFindOwners:optInFindOwners,
+          optOutFindOwners:optOutFindOwners,ownersFileName:ownersFileName,
+          rejectErrorInOwners:rejectErrorInOwners,
+          removeOwnerApproved:removeOwnerApproved,useJSE:useJSE,};
+}();
+*/
+var pluginFindOwners = {
+  BCOLabel: "Build-Cop-Override",
+  ExemptUsers: [104, 106],
+  NoOwnersReviewBranches: ["refs/heads/my-experiment", "refs/heads/beta-testing"],
+  addDebugMsg: true,
+  alwaysShowButton: true,
+  blockSubmit: true,
+  enable: true,
+  hasBuildCopOverride: false,
+  isBCOLabel: (x) => x.name == BCOLabel && x.value > 0,
+  isExemptFromReviews: false,
+  isExemptUploader: false,
+  maxCacheAge: 30,
+  maxCacheSize: 2000,
+  minOwnerVoteLevel: 1,
+  needOwnerReview: true,
+  optInFindOwners: true,
+  optOutFindOwners: false,
+  ownersFileName: "OWNERS.android",
+  rejectErrorInOwners: true,
+  removeOwnerApproved: true,
+  useJSE: true,
+};

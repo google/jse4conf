@@ -1,0 +1,24 @@
+var CL = {
+  user: (email, id, name) => ({Email: email, Id: id, Name: name}),
+  Author: ({Email:"u101@g.com", Id:101, Name:"John Smith"}),
+  Uploader: ({Email:"u102@g.com", Id:102, Name:"John"}),
+};
+/*
+var SampleCL = function() {
+  const SuperUsers = [101, 107];
+  const isSuperUser = (x) => SuperUsers.indexOf(x.Id) >= 0;
+  const authorIsSuperUser = isSuperUser(CL.Author);
+  const uploaderIsSuperUser = isSuperUser(CL.Uploader);
+  const useJSE = true;
+  return {SuperUsers:SuperUsers,authorIsSuperUser:authorIsSuperUser,
+          isSuperUser:isSuperUser,uploaderIsSuperUser:uploaderIsSuperUser,
+          useJSE:useJSE,};
+}();
+*/
+var SampleCL = {
+  SuperUsers: [101, 107],
+  authorIsSuperUser: true,
+  isSuperUser: (x) => SuperUsers.indexOf(x.Id) >= 0,
+  uploaderIsSuperUser: false,
+  useJSE: true,
+};

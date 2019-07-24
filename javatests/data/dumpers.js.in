@@ -1,0 +1,22 @@
+// Functions to dump JavaScript objects in unit tests.
+
+// Rhino's function object toString outputs '\n' at the head.
+// So we use TrimString to remove the extra '\n'.
+function TrimString(obj) {
+  return obj.toString().trim();
+}
+
+// Evaluate an exp string and dump the result as a string.
+function DumpEval(exp) {
+  return '# (' + exp + ')=' + TrimString(eval(exp)) + '\n';
+}
+
+// Evaluate an exp string and dump the result object's sorted key-value pairs.
+function DumpObject(exp) {
+  var obj = eval(exp);
+  var keys = [];
+  Object.keys(obj).forEach(k => keys.push(k));
+  keys.sort();
+  var addValue = (acc, v, i, a) => acc + v + '=' + TrimString(obj[v]) + '\n';
+  return keys.reduce(addValue, '# ' + exp + ':\n');
+}

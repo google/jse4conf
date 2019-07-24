@@ -1,0 +1,3 @@
+var CL = {};
+CL.branch = 'refs/master';
+CL.project = 'projectA/D1';

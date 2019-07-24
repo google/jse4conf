@@ -1,0 +1,45 @@
+/*
+var S1S2 = function() {
+  const br2 = 'CL.branch';
+  const useJSE = true;
+  // ERROR: br2 = CL.branch
+  // org.mozilla.javascript.EcmaError: ReferenceError: "CL" is not defined. (br2#1)
+  return {br2:br2,useJSE:useJSE,};
+}();
+*/
+var S1S2 = {
+  br2: "CL.branch",
+  useJSE: true,
+};
+/*
+var S2 = function() {
+  const key = 123;
+  const useJSE = true;
+  return {key:key,useJSE:useJSE,};
+}();
+*/
+var S2 = {
+  key: 123,
+  useJSE: true,
+};
+/*
+var Sec2 = function() {
+  const key = 246;
+  const p1Name = 'Sec2.key';
+  const p1P2Name = 'S2.key';
+  const p2Name = key;
+  const useJSE = true;
+  // ERROR: p1Name = Sec2.key
+  // org.mozilla.javascript.EcmaError: ReferenceError: "Sec2" is not defined. (p1Name#1)
+  // ERROR: p1P2Name = S2.key
+  // org.mozilla.javascript.EcmaError: ReferenceError: "S2" is not defined. (p1P2Name#1)
+  return {key:key,p1Name:p1Name,p1P2Name:p1P2Name,p2Name:p2Name,useJSE:useJSE,};
+}();
+*/
+var Sec2 = {
+  key: 246,
+  p1Name: "Sec2.key",
+  p1P2Name: "S2.key",
+  p2Name: 246,
+  useJSE: true,
+};

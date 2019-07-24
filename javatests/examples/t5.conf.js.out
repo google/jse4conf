@@ -1,0 +1,100 @@
+/*
+var T1 = function() {
+  const fac = (n) => n < 2 ? 1 : n * fac(n - 1);
+  const n = fac(6);
+  const useJSE = true;
+  return {fac:fac,n:n,useJSE:useJSE,};
+}();
+*/
+var T1 = {
+  fac: (n) => n < 2 ? 1 : n * fac(n - 1),
+  n: 720,
+  useJSE: true,
+};
+/*
+var T2 = function() {
+  const fac = (n) => n < 2 ? 1 : n * fac(n - 1);
+  const n = fac(6);
+  const useJSE = true;
+  const zOrder = [fac, n];
+  return {fac:fac,n:n,useJSE:useJSE,zOrder:zOrder,};
+}();
+*/
+var T2 = {
+  fac: (n) => n < 2 ? 1 : n * fac(n - 1),
+  n: 720,
+  useJSE: true,
+  zOrder: [(n) => n < 2 ? 1 : n * fac(n - 1), 720],
+};
+/*
+var T3 = function() {
+  const getN = (x) => x.n1;
+  const xObj = ({ n1: 6, n2: 7});
+  const n1 = getN(xObj);
+  const n2 = xObj.n2;
+  const useJSE = true;
+  return {getN:getN,n1:n1,n2:n2,useJSE:useJSE,xObj:xObj,};
+}();
+*/
+var T3 = {
+  getN: (x) => x.n1,
+  n1: 6,
+  n2: 7,
+  useJSE: true,
+  xObj: ({n1:6, n2:7}),
+};
+/*
+var T4 = function() {
+  const xObj = ({ n1: 6, n2: 7});
+  const getN = (x) => x.n1;
+  const n1 = getN(xObj);
+  const n2 = xObj.n2;
+  const useJSE = true;
+  const zObj = [xObj, getN, n1, n2];
+  return {getN:getN,n1:n1,n2:n2,useJSE:useJSE,xObj:xObj,zObj:zObj,};
+}();
+*/
+var T4 = {
+  getN: (x) => x.n1,
+  n1: 6,
+  n2: 7,
+  useJSE: true,
+  xObj: ({n1:6, n2:7}),
+  zObj: [{n1:6, n2:7}, (x) => x.n1, 6, 7],
+};
+/*
+var T5 = function() {
+  const count = ({ n: 0});
+  const n1 = ++count.n;
+  const n2 = ++count.n;
+  const n3 = ++count.n;
+  const useJSE = true;
+  return {count:count,n1:n1,n2:n2,n3:n3,useJSE:useJSE,};
+}();
+*/
+var T5 = {
+  count: ({n:3}),
+  n1: 1,
+  n2: 2,
+  n3: 3,
+  useJSE: true,
+};
+/*
+var T6 = function() {
+  const count = ({ n: 0});
+  const n3 = ++count.n;
+  const n2 = ++count.n;
+  const n1 = ++count.n;
+  const orderOfKeys = [n3, n2, n1];
+  const useJSE = true;
+  return {count:count,n1:n1,n2:n2,n3:n3,orderOfKeys:orderOfKeys,useJSE:useJSE,};
+}();
+*/
+var T6 = {
+  count: ({n:3}),
+  n1: 3,
+  n2: 2,
+  n3: 1,
+  orderOfKeys: [1, 2, 3],
+  useJSE: true,
+};

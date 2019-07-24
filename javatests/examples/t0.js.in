@@ -1,0 +1,3 @@
+// To test a JSE config file without any predefined JS variables
+// Just run conf2js with an empty JS file like this.
+//   conf2js -js t0.js.in myTest.conf myTest.out

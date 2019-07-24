@@ -1,0 +1,53 @@
+// These are mocked parameters for a Gerrit CL.
+// Real CL dependent values will be set at run-time
+// before computing user key values in a config file.
+// Those key values can be any JavaScript expression
+// computed from these parameters.
+
+// Naming convention:
+//   Function names start with lower case letters.
+//   Non-function property names start with upper case letters.
+
+var CL = {};
+
+// Returns true if any changed file matches the given regular expression.
+CL.commitDelta = (regex) => CL.Files.some(f => f.match(regex) != null);
+
+// Creates a (voted) label of given name, vote, and user id.
+CL.label = (name, vote, uid) => ({Name: name, Value: vote, User: uid});
+
+// Creates a user info object with given email, user id, and user name.
+CL.user = (email, id, name) => ({Email: email, Id: id, Name: name});
+
+// Filter out labels of the given name.
+CL.removeLabel = (x, labels) => labels.filter(y => y.Name != x);
+
+// CL Author, Committer, Uploader
+CL.Author = CL.user('u101@g.com', 101, 'John Smith');
+CL.Committer = CL.user('u102@g.com', 102, 'John');
+CL.Uploader = CL.user('u42@g.com', 42, 'Smith');
+
+CL.Branch = 'refs/beta';  // CL destination branch
+
+CL.Files = ['test.txt', 'OWNERS'];  // all modified/deleted/inserted files
+
+CL.IsPureRevert = false;
+
+CL.Labels = [CL.label('Code-Review', 1, 101)];  // voted labels
+
+CL.Message = 'A test CL';  // commit message
+
+// Number of deleted/inserted/modified files
+CL.NumFiles = {
+  Deleted: 0,
+  Inserted: 0,
+  Modified: 2
+};
+
+CL.NumUnresolvedComments = 0;
+
+CL.Project = 'ProjectA';  // CL destination project (repository)
+
+// Dummy mocked submitFilter to be changed by users.
+var FindOwners = {};
+FindOwners.submitFilter = (labels) => labels;

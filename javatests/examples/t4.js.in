@@ -1,0 +1,5 @@
+// An example CL binding for SampleCL.
+var CL = {};
+CL.user = (email, id, name) => ({Email: email, Id: id, Name: name});
+CL.Author = CL.user('u101@g.com', 101, 'John Smith');
+CL.Uploader = CL.user('u102@g.com', 102, 'John');

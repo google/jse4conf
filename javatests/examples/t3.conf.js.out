@@ -1,0 +1,36 @@
+/*
+var T1 = function() {
+  const f2 = (n) => n < 1 ? 1 : n + f1(n - 1);
+  const f1 = (n) => n < 1 ? 1 : n * f2(n - 1);
+  const useJSE = true;
+  const v1 = f1(3);
+  const v2 = f2(3);
+  return {f1:f1,f2:f2,useJSE:useJSE,v1:v1,v2:v2,};
+  // cycle: f1 => f2 => f1
+  // cycle: f2 => f1 => f2
+}();
+*/
+var T1 = {
+  f1: (n) => n < 1 ? 1 : n * f2(n - 1),
+  f2: (n) => n < 1 ? 1 : n + f1(n - 1),
+  useJSE: true,
+  v1: 9,
+  v2: 7,
+};
+/*
+var T2 = function() {
+  const useJSE = true;
+  const v2 = 'v1 + 20';
+  const v1 = v2 + 10;
+  // ERROR: v2 = v1 + 20
+  // org.mozilla.javascript.EcmaError: ReferenceError: "v1" is not defined. (v2#1)
+  return {useJSE:useJSE,v1:v1,v2:v2,};
+  // cycle: v1 => v2 => v1
+  // cycle: v2 => v1 => v2
+}();
+*/
+var T2 = {
+  useJSE: true,
+  v1: "v1 + 2010",
+  v2: "v1 + 20",
+};
