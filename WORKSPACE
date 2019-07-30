@@ -16,8 +16,8 @@ maven_jar(
 
 maven_jar(
     name = "truth",
-    artifact = "com.google.truth:truth:0.45",
-    sha1 = "e16683346f6a6887b1f140a2984e60c73c66c40a",
+    artifact = "com.google.truth:truth:1.0",
+    sha1 = "998e5fb3fa31df716574b4c9e8d374855e800451",
 )
 
 maven_jar(
@@ -37,4 +37,13 @@ maven_jar(
     name = "guava",
     artifact = "com.google.guava:guava:" + GUAVA_VERSION,
     sha1 = "54fed371b4b8a8cce1e94a9abd9620982d3aa54b",
+)
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "google_bazel_common",
+    strip_prefix = "bazel-common-26011657fee96a949c66500b1662c4c7288a4968",
+    urls = ["https://github.com/google/bazel-common/archive/26011657fee96a949c66500b1662c4c7288a4968.zip"],
+    sha256 = "4fe09d6a62b9ec0b31601c076fa4a92e13a7159d61345c09b5c7b18759f91b87",
 )

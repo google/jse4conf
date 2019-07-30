@@ -23,6 +23,15 @@ java_library(
     deps = JSE4CONF_DEPS,
 )
 
+load("@google_bazel_common//tools/javadoc:javadoc.bzl", "javadoc_library")
+
+javadoc_library(
+    name = "jse4conf-javadoc",
+    srcs = glob(["java/**/*.java"]),
+    deps = [":jse4conf"],
+    root_packages = ["com.google.jse4conf"],
+)
+
 java_binary(
     name = "conf2js",
     main_class = "com/google/jse4conf/Conf2JS",
